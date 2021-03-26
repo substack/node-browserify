@@ -47,8 +47,8 @@ test('debug standalone exposed', function (t) {
     var stream = through();
     stream.push('console.log(1+2)');
     stream.push(null);
-    
-    var b = browserify({ debug: true, standalone: 'xyz' });
+
+    var b = browserify(__dirname + '/debug_standalone/main.js', { debug: true, standalone: 'xyz' });
     b.require(__dirname + '/debug_standalone/x.js', { expose: 'xxx' });
     b.bundle(function (err, buf) {
         var src = buf.toString('utf8');
