@@ -472,7 +472,8 @@ Browserify.prototype._createDeps = function (opts) {
     self._extensions = mopts.extensions;
 
     mopts.transform = [];
-    mopts.transformKey = defined(opts.transformKey, [ 'browserify', 'transform' ]);
+    mopts.defaultTransformKey = [ 'browserify', 'transform' ];
+    mopts.transformKey = defined(opts.transformKey, mopts.defaultTransformKey);
     mopts.postFilter = function (id, file, pkg) {
         if (opts.postFilter && !opts.postFilter(id, file, pkg)) return false;
         if (self._external.indexOf(file) >= 0) return false;

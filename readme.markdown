@@ -166,9 +166,12 @@ Advanced Options:
     Instead of the default package.json#browserify#transform field to list
     all transforms to apply when running browserify, a custom field, like, e.g.
     package.json#browserify#production or package.json#browserify#staging
-    can be used, by for example running:
+    can be used by running:
     * `browserify index.js --transform-key=production > bundle.js`
     * `browserify index.js --transform-key=staging > bundle.js`
+
+    if dependency doesn't specify the custom field, it falls back to
+    package.json#browserify#transform for that dependency
 
   --node
 
