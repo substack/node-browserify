@@ -431,8 +431,7 @@ filenames that start with `.`.
 
 `opts.paths` is an array of directories that browserify searches when looking
 for modules which are not referenced using relative path. Can be absolute or
-relative to `basedir`. Equivalent of setting `NODE_PATH` environmental variable
-when calling `browserify` command.
+relative to `basedir`.
 
 `opts.commondir` sets the algorithm used to parse out the common paths. Use
 `false` to turn this off, otherwise it uses the
