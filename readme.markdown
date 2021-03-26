@@ -482,6 +482,14 @@ $ npm install derequire
 $ browserify main.js --standalone Foo | derequire > bundle.js
 ```
 
+```html
+<script src="bundle.js"></script>
+<script type="text/javascript">
+	// Now you can address `Foo` by name in your HTML document
+	Foo.bar();
+</script>
+```
+
 `opts.insertGlobalVars` will be passed to
 [insert-module-globals](https://www.npmjs.com/package/insert-module-globals)
 as the `opts.vars` parameter.
