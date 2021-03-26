@@ -23,3 +23,23 @@ test('dependency events', function (t) {
         return a.id < b.id ? -1 : 1;
     }
 });
+
+test('round-trip dependency events', function(t) {
+    var b = browserify(__dirname + '/entry/needs_three.js');
+    var cache = {};
+    b.on('dep', function(row) {
+        cache[row.file] = row;
+    });
+
+    b.require(__dirname + '/entry/three.js', { expose: 'three' });
+    b.bundle(function(err, src) {
+        var b2 = browserify(__dirname + '/entry/needs_three.js', { cache: cache });
+        b2.require(__dirname + '/entry/three.js', { expose: 'three' });
+
+        b2.bundle(function(err, src) {
+            t.ok(!err);
+            t.ok(src);
+            t.end();
+        });
+    });
+});
