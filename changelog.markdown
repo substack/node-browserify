@@ -190,7 +190,7 @@ Updates the version of the buffer package, which drops support for IE8-10.
 
 buffer v5 removes the `Object` implementation and relies on a single,
 fast Typed Array (`Uint8Array`) implementation, greatly simplifying the
-maintanence of the buffer package.
+maintenance of the buffer package.
 
 If IE8-10 support is critical to your web app, you can continue to rely on
 browserify v13, or see the PR for other workarounds.
@@ -308,7 +308,7 @@ The [`readable-stream`](https://npmjs.com/package/readable-stream) dependency wa
 ## shiny new HTTP package
 
 [John Hiesey](https://github.com/jhiesey) rewrote the [http-browserify](https://npmjs.org/package/http-browserify) package
-to create [stream-http](https://npmjs.org/package/stream-http), an implemention of `http` that supports streaming in modern browsers. Before v11.0.0, in most situations when you used `http.get` or `http.request`, the entire request would buffer in memory until the download was complete, and a single `'data'` event was emitted with the entire response as a string.
+to create [stream-http](https://npmjs.org/package/stream-http), an implementation of `http` that supports streaming in modern browsers. Before v11.0.0, in most situations when you used `http.get` or `http.request`, the entire request would buffer in memory until the download was complete, and a single `'data'` event was emitted with the entire response as a string.
 
 `stream-http` uses the [Fetch API](https://fetch.spec.whatwg.org/) and various browser-specific XHR extensions to make binary streaming http requests work in as many browsers as possible.
 
@@ -495,7 +495,7 @@ https://github.com/substack/node-browserify/pull/1030
 # 9.0.0
 
 updates browser-pack which uses umd 3.0.0.
-This sligtly changes how `--standalone $name` works.
+This slightly changes how `--standalone $name` works.
 
 https://github.com/substack/browser-pack/pull/49
 https://github.com/substack/node-browserify/pull/1105
