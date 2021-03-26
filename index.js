@@ -537,6 +537,19 @@ Browserify.prototype._createDeps = function (opts) {
             } else cb(err, null, pkg)
         });
     };
+
+    if (opts.resolve) {
+        var baseResolve = mopts.resolve;
+        var customResolve = opts.resolve;
+        mopts.resolve = function (id, parent, cb) {
+            customResolve(id, parent, function (err, file, pkg) {
+                if (!err && !file)
+                    baseResolve(id, parent, cb);
+                else
+                    cb(err, file, pkg);
+            });
+        };
+    }
     
     if (opts.builtins === false) {
         mopts.modules = {};
