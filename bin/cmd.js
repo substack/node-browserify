@@ -45,12 +45,13 @@ if (b.argv.deps) {
 }
 
 if (b.argv.list) {
-    b.pipeline.get('deps').push(through.obj(
-        function (row, enc, next) {
-            console.log(row.file || row.id);
-            next()
-        }
-    ));
+    var deps = [];
+    b.pipeline.get('deps').on('end', function () {
+        deps.sort().forEach(function (d) { console.log(d) });
+    });
+    b.pipeline.on('file', function (file, id) {
+        deps.push(file);
+    });
     return b.bundle();
 }
 
