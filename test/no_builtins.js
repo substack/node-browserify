@@ -2,6 +2,7 @@ var browserify = require('../');
 var test = require('tap').test;
 var path = require('path');
 var vm = require('vm');
+var EOL = require('os').EOL;
 
 test('builtins false', function (t) {
     t.plan(1);
@@ -15,7 +16,7 @@ test('builtins false', function (t) {
     b.bundle(function (err, src) {
         var c = {
             console: { log: function (msg) {
-                t.equal(msg, 'beep boop\n');
+                t.equal(msg, 'beep boop' + EOL);
             } },
             require: require,
             __dirname: process.cwd()
@@ -34,7 +35,7 @@ test('builtins []', function (t) {
     b.bundle(function (err, src) {
         var c = {
             console: { log: function (msg) {
-                t.equal(msg, 'beep boop\n');
+                t.equal(msg, 'beep boop' + EOL);
             } },
             require: require
         };

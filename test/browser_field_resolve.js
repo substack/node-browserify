@@ -30,7 +30,7 @@ test('browser field resolve (c)', function (t) {
         vm.runInNewContext(src, { console: { log: log } });
         function log (x) { t.equal(x, 333) }
     });
-    
+
 });
 
 test('browser field resolve (d)', function (t) {
@@ -120,5 +120,17 @@ test('browser field resolve (l)', function (t) {
         t.ifError(err);
         vm.runInNewContext(src, { console: { log: log } });
         function log (x) { t.deepEqual(x, 3000) }
+    });
+});
+
+test('browser field resolve (m)', function (t) {
+    t.plan(2);
+    var b = browserify(__dirname + '/browser_field_resolve/m/main.js');
+    b.bundle(function (err, src) {
+        t.ifError(err);
+        vm.runInNewContext(src, { console: { log: log } });
+        function log (x) {
+            t.deepEqual(x, 2000)
+        }
     });
 });
