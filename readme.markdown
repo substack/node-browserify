@@ -332,23 +332,23 @@ module.exports = function (s) { return s.toUpperCase() + '!' };
 ```
 
 ```
-$ browserify -r ./robot.js > static/common.js
-$ browserify -x ./robot.js beep.js > static/beep.js
-$ browserify -x ./robot.js boop.js > static/boop.js
+$ browserify -r ./robot.js > bundle/common.js
+$ browserify -x ./robot.js beep.js > bundle/beep.js
+$ browserify -x ./robot.js boop.js > bundle/boop.js
 ```
 
 Then on the beep page you can have:
 
 ``` html
-<script src="common.js"></script>
-<script src="beep.js"></script>
+<script src="bundle/common.js"></script>
+<script src="bundle/beep.js"></script>
 ```
 
 while the boop page can have:
 
 ``` html
-<script src="common.js"></script>
-<script src="boop.js"></script>
+<script src="bundle/common.js"></script>
+<script src="bundle/boop.js"></script>
 ```
 
 This approach using `-r` and `-x` works fine for a small number of split assets,
