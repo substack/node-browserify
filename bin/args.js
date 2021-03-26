@@ -53,7 +53,15 @@ module.exports = function (args, opts) {
     });
     
     var entries = argv._.concat(argv.entry)
-    .filter(Boolean).map(function (entry) {
+    .filter(Boolean).reduce(function (globbed, input) {
+        //Expand any entry file globs if the OS did not expand them already
+        if (input !== '-' && glob.hasMagic(input)) {
+            return globbed.concat(glob.sync(input));
+        }
+        else {
+            return globbed.concat(input);
+        }
+    }, []).map(function (entry) {
         if (entry === '-') {
             var s = process.stdin;
             if (typeof s.read === 'function') return s;
