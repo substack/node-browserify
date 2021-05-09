@@ -1,5 +1,9 @@
 environment:
   matrix:
+# AppVeyor cannot install Node.js 16 (yet), so skip it.
+#    - nodejs_version: "16"
+    - nodejs_version: "14"
+    - nodejs_version: "12"
     - nodejs_version: "10"
     - nodejs_version: "9"
     - nodejs_version: "8"
