@@ -486,6 +486,10 @@ $ browserify main.js --standalone Foo | derequire > bundle.js
 [insert-module-globals](https://www.npmjs.com/package/insert-module-globals)
 as the `opts.vars` parameter.
 
+`opts.resolve` will be passed to
+[resolve](https://www.npmjs.com/package/resolve)
+as the `opts` parameter.
+
 `opts.externalRequireName` defaults to `'require'` in `expose` mode but you can
 use another name.
 

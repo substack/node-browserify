@@ -498,6 +498,10 @@ Browserify.prototype._createDeps = function (opts) {
     };
     mopts.resolve = function (id, parent, cb) {
         if (self._ignore.indexOf(id) >= 0) return cb(null, paths.empty, {});
+
+        if (opts.resolve) {
+            parent = xtend(parent, opts.resolve);
+        }
         
         self._bresolve(id, parent, function (err, file, pkg) {
             if (file && self._ignore.indexOf(file) >= 0) {
